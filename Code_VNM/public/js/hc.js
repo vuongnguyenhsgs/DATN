@@ -340,9 +340,77 @@ $(document).ready(function () {
     $('button#btnDeleteProductionCancel').click(function () {
         $('.dim, #confirm-delete-production').hide();
     });
-    
-    $('button#btnAddMaterialOk').click(function(){
-        
+
+    $('button#btnAddMaterialOk').click(function () {
+        $('label#lblAddMaterial').text();
+        if ($('input#txtMaterialName').val().trim() === '') {
+            $('label#lblAddMaterial').text('Vui lòng nhập tên nguyên liệu');
+            return;
+        }
+        if ($('input#txtQuantity').val() === '') {
+            $('label#lblAddMaterial').text('Vui lòng nhập số lượng');
+            return;
+        }
+        if ($('input#txtPrice').val() === '') {
+            $('label#lblAddMaterial').text('Vui lòng nhập giá');
+            return;
+        }
+        //Kiểm tra trùng tên
+        if ($('input#txtMaterialName').val().trim() !== '') {
+            $.ajax({
+                url: "/Admin/materials/is-existed",
+                type: 'POST',
+                data: {
+                    txtMaterialName: $('input#txtMaterialName').val().trim(),
+                    _token: $('input#crsf_token_form').val(),
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data === 'true') {
+                        $('label#lblAddMaterial').text('Tên nguyên liệu bị trùng, hãy thử lại');
+                        return;
+                    } else {
+                        //Nếu không bị trùng thì thêm mới
+                        $.ajax({
+                            url: "/Admin/materials/add",
+                            type: 'POST',
+                            data: {
+                                txtMaterialName: $('input#txtMaterialName').val().trim(),
+                                txtPrice: $('input#txtPrice').val().trim(),
+                                txtQuantity: $('input#txtQuantity').val().trim(),
+                                cobProduction: $('select#cobProduction').val(),
+                                _token: $('input#crsf_token_form').val(),
+                            },
+                            success: function (data, textStatus, jqXHR) {
+                                if (data === 'true') {
+                                    $('.dim').show();
+                                    $('div#noti-add-material').show('fast');
+                                    $('label#lblNotiContent').text('Thêm thành công');
+                                    $('button#btnNotiOk').click(function () {
+                                        $('.dim, div#noti-add-material').hide();
+                                    });
+                                } else {
+                                    $('.dim').show();
+                                    $('div#noti-add-material').show('fast');
+                                    $('label#lblNotiContent').text('Thêm không thành công, hãy thử lại');
+                                    $('button#btnNotiOk').click(function () {
+                                        $('.dim, div#noti-add-material').hide();
+                                    });
+                                }
+
+                            },
+                        });
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $('.dim').show();
+                    $('div#noti-add-material').show('fast');
+                    $('label#lblNotiContent').text('Thêm không thành công, hãy thử lại');
+                    $('button#btnNotiOk').click(function () {
+                        $('.dim, div#noti-add-material').hide();
+                    });
+                }
+            });
+        }
     });
 });
 

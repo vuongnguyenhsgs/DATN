@@ -92,6 +92,14 @@
                                         </ul>
                                     </li>
                                 </ul>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a href="#"><i class="fa fa-list-alt"></i>Đơn hàng<span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="/Admin/bills/all">Danh sách đơn hàng</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
 

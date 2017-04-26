@@ -33,4 +33,22 @@ class MaterialController extends Controller{
             return 'false';
         }
     }
+    
+    protected function isExistedMaterial(Request $request){
+        $materials = MaterialModel::getMaterialByName($request->txtMaterialName);
+        if(count($materials) > 0){
+            return 'true';
+        }else{
+            return 'false';
+        }
+    }
+    
+    protected function postAddMaterial(Request $request){
+        $data = $request->except('_token');
+        if(MaterialModel::postAddMaterial($data)){
+            return 'true';
+        }else{
+            return 'false';
+        }
+    }
 }

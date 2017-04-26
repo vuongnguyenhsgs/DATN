@@ -26,19 +26,6 @@ class DrinkModel {
                         ->where('id', '=', $id)->get();
     }
 
-    public static function addNewDrink($data) {
-        return DB::table('drinks')
-                        ->insert([
-                            'name' => $data->txtDrinkName,
-                            'category_id' => $data->cobCategory,
-                            'image1' => $data->image1,
-                            'image2' => $data->image2,
-                            'image3' => $data->image3,
-                            'image4' => $data->image4,
-                            'price' => $data->txtPrice,
-                            'description' => $data->txtDescription
-        ]);
-    }
 
     public static function isExistedCategory($categoryName) {
         $categories = DB::table('categories')->select('id', 'name')
