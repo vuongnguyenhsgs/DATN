@@ -25,9 +25,13 @@ class DrinkModel {
         return DB::table('drinks')->select('id','name','category_id','image1','price','description')
                         ->where('id', '=', $id)->get();
     }
+    
+    public static function getDrinkToHomePage(){
+        return DB::table('drinks')->select('id','name','category_id','image1','price','description')
+                ->where('deleted_flag','=','0')->paginate(6);
+    }
 
-
-    public static function isExistedCategory($categoryName) {
+        public static function isExistedCategory($categoryName) {
         $categories = DB::table('categories')->select('id', 'name')
                         ->where('name', '=', $categoryName)->get();
         if (count($categories) > 0) {
@@ -57,6 +61,18 @@ class DrinkModel {
             return DB::table('drinks')->where('id','=',$drinkId)->update(['deleted_flag' => 1]);
         } catch (Exception $ex) {
             return false;
+        }
+    }
+    
+    public static function getDrinkByCategory($id){
+        try{
+            return DB::table('drinks')->select('id','name','category_id','image1','price','description')
+                ->where([
+                    ['deleted_flag','=','0'],
+                    ['category_id','=',$id]
+                    ])->paginate(6);
+        } catch (Exception $ex) {
+            return [];
         }
     }
 

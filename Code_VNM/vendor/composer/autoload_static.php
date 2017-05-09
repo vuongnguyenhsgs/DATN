@@ -74,6 +74,10 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         array (
             'Illuminate\\' => 11,
         ),
+        'G' => 
+        array (
+            'Gloudemans\\Shoppingcart\\' => 24,
+        ),
         'F' => 
         array (
             'Faker\\' => 6,
@@ -83,6 +87,7 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
             'Dotenv\\' => 7,
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+            'Darryldecode\\' => 13,
         ),
         'C' => 
         array (
@@ -202,6 +207,10 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
+        'Gloudemans\\Shoppingcart\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/gloudemans/shoppingcart/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
@@ -217,6 +226,10 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Darryldecode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode',
         ),
         'Cron\\' => 
         array (
@@ -279,11 +292,23 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\Process\\BillController' => __DIR__ . '/../..' . '/app/Http/Controllers/Process/BillController.php',
+        'App\\Http\\Controllers\\Process\\DrinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Process/DrinkController.php',
+        'App\\Http\\Controllers\\Process\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Process/LoginController.php',
+        'App\\Http\\Controllers\\Process\\MaterialController' => __DIR__ . '/../..' . '/app/Http/Controllers/Process/MaterialController.php',
+        'App\\Http\\Controllers\\Process\\ProductionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Process/ProductionController.php',
+        'App\\Http\\Controllers\\Shop\\ShopController' => __DIR__ . '/../..' . '/app/Http/Controllers/Shop/ShopController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Models\\BillModel' => __DIR__ . '/../..' . '/app/Http/Models/BillModel.php',
+        'App\\Http\\Models\\CategoryModel' => __DIR__ . '/../..' . '/app/Http/Models/CategoryModel.php',
+        'App\\Http\\Models\\DrinkModel' => __DIR__ . '/../..' . '/app/Http/Models/DrinkModel.php',
+        'App\\Http\\Models\\MaterialModel' => __DIR__ . '/../..' . '/app/Http/Models/MaterialModel.php',
+        'App\\Http\\Models\\ProductionModel' => __DIR__ . '/../..' . '/app/Http/Models/ProductionModel.php',
+        'App\\Http\\Models\\UserModel' => __DIR__ . '/../..' . '/app/Http/Models/UserModel.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
@@ -305,6 +330,20 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         'Cron\\MinutesField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/MonthField.php',
         'Cron\\YearField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/YearField.php',
+        'Darryldecode\\Cart\\Cart' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Cart.php',
+        'Darryldecode\\Cart\\CartCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCollection.php',
+        'Darryldecode\\Cart\\CartCondition' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartCondition.php',
+        'Darryldecode\\Cart\\CartConditionCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartConditionCollection.php',
+        'Darryldecode\\Cart\\CartServiceProvider' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/CartServiceProvider.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidConditionException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidConditionException.php',
+        'Darryldecode\\Cart\\Exceptions\\InvalidItemException' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Exceptions/InvalidItemException.php',
+        'Darryldecode\\Cart\\Facades\\CartFacade' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Facades/CartFacade.php',
+        'Darryldecode\\Cart\\Helpers\\Helpers' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Helpers/Helpers.php',
+        'Darryldecode\\Cart\\ItemAttributeCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemAttributeCollection.php',
+        'Darryldecode\\Cart\\ItemCollection' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/ItemCollection.php',
+        'Darryldecode\\Cart\\Validators\\CartConditionValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartConditionValidator.php',
+        'Darryldecode\\Cart\\Validators\\CartItemValidator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/CartItemValidator.php',
+        'Darryldecode\\Cart\\Validators\\Validator' => __DIR__ . '/..' . '/darryldecode/cart/src/Darryldecode/Cart/Validators/Validator.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
@@ -735,6 +774,16 @@ class ComposerStaticInit970d81357026843c858b0fb68d9d7ad6
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
+        'Gloudemans\\Shoppingcart\\CanBeBought' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CanBeBought.php',
+        'Gloudemans\\Shoppingcart\\Cart' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Cart.php',
+        'Gloudemans\\Shoppingcart\\CartItem' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CartItem.php',
+        'Gloudemans\\Shoppingcart\\CartItemOptions' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/CartItemOptions.php',
+        'Gloudemans\\Shoppingcart\\Contracts\\Buyable' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Contracts/Buyable.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\CartAlreadyStoredException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/CartAlreadyStoredException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\InvalidRowIDException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/InvalidRowIDException.php',
+        'Gloudemans\\Shoppingcart\\Exceptions\\UnknownModelException' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Exceptions/UnknownModelException.php',
+        'Gloudemans\\Shoppingcart\\Facades\\Cart' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/Facades/Cart.php',
+        'Gloudemans\\Shoppingcart\\ShoppingcartServiceProvider' => __DIR__ . '/..' . '/gloudemans/shoppingcart/src/ShoppingcartServiceProvider.php',
         'Hamcrest\\Arrays\\IsArray' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArray.php',
         'Hamcrest\\Arrays\\IsArrayContaining' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContaining.php',
         'Hamcrest\\Arrays\\IsArrayContainingInAnyOrder' => __DIR__ . '/..' . '/hamcrest/hamcrest-php/hamcrest/Hamcrest/Arrays/IsArrayContainingInAnyOrder.php',

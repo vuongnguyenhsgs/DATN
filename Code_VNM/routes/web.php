@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'Process\LoginController@getLogin');
+Route::get('/', 'Shop\ShopController@index');
 Route::get('/login', 'Process\LoginController@getLogin');
 Route::post('/login', 'Process\LoginController@postLogin');
 Route::get('/logout', 'Process\LoginController@getLogout');
@@ -35,6 +35,8 @@ Route::post('/Admin/materials/delete','Process\MaterialController@postDelMateria
 
 Route::get('/Admin/bills/all','Process\BillController@getBill');
 Route::get('/Admin/bills/add','Process\BillController@getAddBill');
+Route::post('/Admin/bills/add','Process\BillController@postAddBill');
+Route::get('/Admin/bills/add-mob','Process\BillController@postAddBill');
 
 Route::get('/Admin/productions/all','Process\ProductionController@getAll');
 Route::get('/Admin/productions/add','Process\ProductionController@getAdd');
@@ -42,3 +44,9 @@ Route::post('/Admin/productions/delete','Process\ProductionController@postDelPro
 
 Route::post('/Admin/categories/is-existed', 'Process\DrinkController@isExistedCategory');
 Route::post('/Admin/categories/add', 'Process\DrinkController@addCategory');
+
+Route::get('/home','Shop\ShopController@index');
+Route::get('/category/{id}', 'Shop\ShopController@getDrinkByCategory');
+Route::get('/drink/detail/{id}', 'Shop\ShopController@getDrinkDetail');
+Route::post('/cart/addToCart','Shop\ShopController@postAddToBill');
+Route::get('/cart','Shop\ShopController@getCart');

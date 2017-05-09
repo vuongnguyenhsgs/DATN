@@ -10,38 +10,38 @@
         <title>Gentelella Alela! | </title>
 
         <!-- Bootstrap -->
-        <link href="/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="{!!asset('vendors/bootstrap/dist/css/bootstrap.min.css')!!}" rel="stylesheet">
         <!-- Font Awesome -->
-        <link href="/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="{!!asset('vendors/font-awesome/css/font-awesome.min.css')!!}" rel="stylesheet">
         <!-- NProgress -->
-        <link href="/vendors/nprogress/nprogress.css" rel="stylesheet">
+        <link href="{!!asset('vendors/nprogress/nprogress.css')!!}" rel="stylesheet">
         <!-- jQuery custom content scroller -->
-        <link href="/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
-        <link href="/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+        <link href="{!!asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')!!}" rel="stylesheet"/>
+        <link href="{!!asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')!!}" rel="stylesheet">
 
         <!-- Custom Theme Style -->
-        <link href="/css/custom.css" rel="stylesheet">
-        <link href="/css/main.css" rel="stylesheet">
-        <link href="/css/select2.css" rel="stylesheet">
+        <link href="{!!asset('css/custom.css')!!}" rel="stylesheet">
+        <link href="{!!asset('css/main.css')!!}" rel="stylesheet">
+        <link href="{!!asset('css/select2.css')!!}" rel="stylesheet">
 
         <!-- jQuery -->
-        <script src="/vendors/jquery/dist/jquery.min.js"></script>
+        <script src="{!!asset('vendors/jquery/dist/jquery.min.js')!!}"></script>
         <!-- Bootstrap -->
-        <script src="/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="{!!asset('vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
         <!-- FastClick -->
-        <script src="/vendors/fastclick/lib/fastclick.js"></script>
+        <script src="{!!asset('vendors/fastclick/lib/fastclick.js')!!}"></script>
         <!-- NProgress -->
-        <script src="/vendors/nprogress/nprogress.js"></script>
+        <script src="{!!asset('vendors/nprogress/nprogress.js')!!}"></script>
         <!-- jQuery custom content scroller -->
-        <script src="/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"></script>
-        <script src="/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
-        <script src="/vendors/moment/min/moment.min.js"></script>
-        <script src="/vendors/switchery/dist/switchery.min.js"></script>
-        <script src="/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
-        <script src="/vendors/google-code-prettify/src/prettify.js"></script>
-        <script src="/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
-        <script src="/js/hc.js"></script>
-        <script src="/js/select2.js"></script>
+        <script src="{!!asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js')!!}"></script>
+        <script src="{!!asset('vendors/datatables.net/js/jquery.dataTables.min.js')!!}"></script>
+        <script src="{!!asset('vendors/moment/min/moment.min.js')!!}"></script>
+        <script src="{!!asset('vendors/switchery/dist/switchery.min.js')!!}"></script>
+        <script src="{!!asset('vendors/jquery.hotkeys/jquery.hotkeys.js')!!}"></script>
+        <script src="{!!asset('vendors/google-code-prettify/src/prettify.js')!!}"></script>
+        <script src="{!!asset('vendors/jquery.tagsinput/src/jquery.tagsinput.js')!!}"></script>
+        <script src="{!!asset('js/hc.js')!!}"></script>
+        <script src="{!!asset('js/select2.js')!!}"></script>
 
     </head>
 
@@ -55,7 +55,7 @@
                         <!-- menu profile quick info -->
                         <div class="profile clearfix">
                             <div class="profile_pic">
-                                <img src="/images/user-icon.png" class="img-circle profile_img">
+                                <img src="{!!asset('images/user-icon.png')!!}" class="img-circle profile_img">
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
@@ -69,8 +69,8 @@
                                     <li>
                                         <a href="#"><i class="fa fa-list-alt"></i> Quản lý đồ uống <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="/Admin/drinks/all">Danh sách đồ uống</a></li>
-                                            <li><a href="/Admin/drinks/add">Thêm mới</a></li>
+                                            <li><a href="{!!url('Admin/drinks/all')!!}">Danh sách đồ uống</a></li>
+                                            <li><a href="{!!url('Admin/drinks/add')!!}">Thêm mới</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -78,8 +78,8 @@
                                     <li>
                                         <a href="#"><i class="fa fa-list-alt"></i> Quản lý nguyên liệu <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="/Admin/materials/all">Danh sách nguyên liệu</a></li>
-                                            <li><a href="/Admin/materials/add">Thêm mới</a></li>
+                                            <li><a href="{!!url('Admin/materials/all')!!}">Danh sách nguyên liệu</a></li>
+                                            <li><a href="{!!url('Admin/materials/add')!!}">Thêm mới</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -87,8 +87,8 @@
                                     <li>
                                         <a href="#"><i class="fa fa-list-alt"></i> Nhà cung cấp <span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="/Admin/productions/all">Danh sách nhà cung cấp</a></li>
-                                            <li><a href="/Admin/productions/add">Thêm mới</a></li>
+                                            <li><a href="{!!url('Admin/productions/all')!!}">Danh sách nhà cung cấp</a></li>
+                                            <li><a href="{!!url('Admin/productions/add')!!}">Thêm mới</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -96,7 +96,7 @@
                                     <li>
                                         <a href="#"><i class="fa fa-list-alt"></i>Đơn hàng<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
-                                            <li><a href="/Admin/bills/all">Danh sách đơn hàng</a></li>
+                                            <li><a href="{!!url('Admin/bills/all')!!}">Danh sách đơn hàng</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -117,7 +117,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="/images/user-icon.png" alt="">John Doe
+                                        <img src="{!!asset('images/user-icon.png')!!}" alt="">John Doe
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -129,7 +129,7 @@
                                             </a>
                                         </li>
                                         <li><a href="javascript:;">Help</a></li>
-                                        <li><a href="/login"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                        <li><a href="{!!url('login')!!}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                     </ul>
                                 </li>
 
@@ -141,7 +141,7 @@
                                     <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                         <li>
                                             <a>
-                                                <span class="image"><img src="/images/user-icon.png" alt="Profile Image" /></span>
+                                                <span class="image"><img src="{!!asset('images/user-icon.png')!!}" alt="Profile Image" /></span>
                                                 <span>
                                                     <span>John Smith</span>
                                                     <span class="time">3 mins ago</span>
@@ -176,7 +176,7 @@
             </div>
         </div>
         <!-- Custom Theme Scripts -->
-        <script src="/js/custom.js"></script>
+        <script src="{!!url('js/custom.js')!!}"></script>
     </body>
 </html>
 

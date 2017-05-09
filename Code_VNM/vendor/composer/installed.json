@@ -3443,5 +3443,108 @@
             "testing",
             "xunit"
         ]
+    },
+    {
+        "name": "gloudemans/shoppingcart",
+        "version": "2.3.0",
+        "version_normalized": "2.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Crinsane/LaravelShoppingcart.git",
+            "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Crinsane/LaravelShoppingcart/zipball/195cc095f53c66b60afaf0753295bc9c6b2773c3",
+            "reference": "195cc095f53c66b60afaf0753295bc9c6b2773c3",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/events": "5.1.*|5.2.*|5.3.*|5.4.*",
+            "illuminate/session": "5.1.*|5.2.*|5.3.*|5.4.*",
+            "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9.0",
+            "orchestra/testbench": "~3.0",
+            "phpunit/phpunit": "~4.0"
+        },
+        "suggest": {
+            "gloudemans/notify": "Simple flash notifications for Laravel"
+        },
+        "time": "2017-01-25 09:56:35",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Gloudemans\\Shoppingcart\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rob Gloudemans",
+                "email": "info@robgloudemans.nl"
+            }
+        ],
+        "description": "Laravel Shoppingcart",
+        "keywords": [
+            "laravel",
+            "shoppingcart"
+        ]
+    },
+    {
+        "name": "darryldecode/cart",
+        "version": "3.0.1",
+        "version_normalized": "3.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/darryldecode/laravelshoppingcart.git",
+            "reference": "4e5716f0214978e19bab76fd023aa979e8a478ec"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/darryldecode/laravelshoppingcart/zipball/4e5716f0214978e19bab76fd023aa979e8a478ec",
+            "reference": "4e5716f0214978e19bab76fd023aa979e8a478ec",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*",
+            "illuminate/translation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*",
+            "illuminate/validation": "5.0.*|5.1.*|5.2.*|5.3.*|5.4.*",
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "mockery/mockery": "~0.9",
+            "phpunit/phpunit": "~4.0",
+            "symfony/var-dumper": "2.7.*@dev"
+        },
+        "time": "2017-03-09 09:22:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Darryldecode\\": "src/Darryldecode"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Darryl Fernandez",
+                "email": "engrdarrylfernandez@gmail.com"
+            }
+        ],
+        "description": "Laravel 5 Shopping cart",
+        "keywords": [
+            "cart",
+            "laravel",
+            "shopping cart"
+        ]
     }
 ]

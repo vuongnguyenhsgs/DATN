@@ -10,6 +10,10 @@ function addCommas(nStr) {
     return x1 + x2;
 }
 
+function removeCommas(str) {
+    return(str.replace(/,/g, ''));
+}
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
@@ -26,6 +30,26 @@ function readURL(input) {
 }
 
 $(document).ready(function () {
+
+    $(function () {
+        $.scrollUp({
+            scrollName: 'scrollUp', // Element ID
+            scrollDistance: 300, // Distance from top/bottom before showing element (px)
+            scrollFrom: 'top', // 'top' or 'bottom'
+            scrollSpeed: 300, // Speed back to top (ms)
+            easingType: 'linear', // Scroll to top easing (see http://easings.net/)
+            animation: 'fade', // Fade, slide, none
+            animationSpeed: 200, // Animation in speed (ms)
+            scrollTrigger: false, // Set a custom triggering element. Can be an HTML string or jQuery object
+            //scrollTarget: false, // Set a custom target element for scrolling to the top
+            scrollText: '<i class="fa fa-angle-up"></i>', // Text for element, can contain HTML
+            scrollTitle: false, // Set a custom <a> title if required.
+            scrollImg: false, // Set true to use image
+            activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+            zIndex: 2147483647 // Z-Index for the overlay
+        });
+    });
+
     /**
      * Hàm thêm dấu phẩy ngăn cách ở đơn giá sản phẩm
      */
@@ -341,6 +365,9 @@ $(document).ready(function () {
         $('.dim, #confirm-delete-production').hide();
     });
 
+    /**
+     * 
+     */
     $('button#btnAddMaterialOk').click(function () {
         $('label#lblAddMaterial').text();
         if ($('input#txtMaterialName').val().trim() === '') {
@@ -408,6 +435,193 @@ $(document).ready(function () {
                     $('button#btnNotiOk').click(function () {
                         $('.dim, div#noti-add-material').hide();
                     });
+                }
+            });
+        }
+    });
+
+    /**
+     * Hiển thị pop-up thêm đồ uống vào hóa đơn
+     */
+    $('button#btnAddToBill').click(function () {
+        $('.dim').show();
+        $('div#popAddToBill').show('fast');
+    });
+
+    /**
+     * Click OK ở pop-up thêm đồ uống vào hóa đơn
+     */
+    $('button#btnAddToBillOk').click(function () {
+        //Kiểm tra số lượng
+        if ($('input#txtQuantity').val() === '') {
+            $('label#errAddToBill').text('Vui lòng nhập số lượng');
+            return;
+        } else {
+            //Thêm row vào bảng chi tiết hóa đơn
+            var name = $('#cobDrinkToBill option:selected').text();
+            var value = $('select#cobDrinkToBill').val().split('-');
+            var content = "<tr class=\"bill-detail\">";
+            content += "<td>" + name + "</td>";
+            content += "<td class=\"drink-id\ hidden\">" + value[0] + "</td>";
+            content += "<td class=\"quantity\">" + $('input#txtQuantity').val() + "</td>";
+            content += "<td class=\"drink-price\">" + addCommas(value[1]) + "</td>";
+            content += "<td class=\"subTotal\">" + addCommas(parseInt(value[1]) * parseInt($('input#txtQuantity').val())) + "</td>";
+            content += "<td style=\"text-align:center\"><span class=\"fa fa-times cancel\"></span></td>"
+            content += "</tr>";
+            $('#tblDetailBill').append(content);
+            //Tính lại tổng tiền
+            var total = 0;
+            if ($('label#lblTotal').text() !== '') {
+                total = parseInt(removeCommas($('label#lblTotal').text()));
+            }
+            total += parseInt($('input#txtQuantity').val()) * value[1];
+            $('label#lblTotal').text(addCommas(total + ""));
+            //Ẩn pop-up
+            $('.dim, div#popAddToBill').hide();
+        }
+    });
+
+    /**
+     * Xử lý sự kiện click vào icon xóa 1 sản phẩm khỏi chi tiết hóa đơn
+     */
+    $(document).on('click', 'span.cancel', function () {
+        var total = 0;
+        //Tính lại tổng tiền
+        if ($('label#lblTotal').text() !== '') {
+            total = parseInt(removeCommas($('label#lblTotal').text()));
+        }
+        total -= parseInt(removeCommas($(this).parent().siblings('.subTotal').text()));
+        $('label#lblTotal').text(addCommas("" + total));
+        //Xóa row
+        $(this).closest('tr').remove();
+    });
+
+    /**
+     * Hủy thêm sản phẩm vào chi tiết hóa đơn
+     */
+    $('button#btnAddToBillCancel').click(function () {
+        $('.dim, div#popAddToBill').hide();
+        $('input#txtQuantity').val('');
+    });
+
+    /**
+     * Lưu thông tin hóa đơn
+     */
+    $('button#btnAddBillOk').click(function () {
+        //Chuyển giá trị thẻ input về blank
+        $('input#bill-detail').val('');
+        //Xóa thông báo lỗi
+        $('label#lblErrAddBill').text('');
+        //Kiểm tra nhập tên khách hàng
+        if ($('input#txtCustomerName').val().trim() === '') {
+            $('label#lblErrAddBill').text('Vui lòng nhập tên khách hàng');
+            return;
+        }
+        //Kiểm tra nhập sản phẩm
+        if ($('tr.bill-detail').length === 0) {
+            $('label#lblErrAddBill').text('Vui lòng chọn ít nhất 1 món');
+            return;
+        }
+        //Sinh chuỗi chi tiết hóa đơn
+        $.each($('tr.bill-detail'), function (i, val) {
+            var temp = $(this).children('td.drink-id').text() + '-' +
+                    removeCommas($(this).children('td.quantity').text()) + '-' +
+                    removeCommas($(this).children('td.drink-price').text()) + ',';
+            $('input#bill-detail').val($('input#bill-detail').val() + temp);
+        });
+        //Lưu hóa đơn
+        $.ajax({
+            url: "/Admin/bills/add",
+            type: 'POST',
+            data: {
+                txtCustomerName: $('input#txtCustomerName').val(),
+                txtPhone: $('input#txtPhone').val(),
+                txtAddress: $('input#txtAddress').val(),
+                billDetail: $('input#bill-detail').val(),
+                total: removeCommas($('label#lblTotal').text()),
+                _token: $('input#crsf_token_form').val()
+            },
+            beforeSend: function (xhr) {
+                $('.dim, #noti-add-bill').show();
+                $('div#div-loading-image').show();
+                $('label#lblNotiContent').text("Đang xử lý...");
+                $('div#div-button').hide();
+            },
+            success: function (data, textStatus, jqXHR) {
+                if (data === 'true') {
+                    $('.dim, #noti-add-bill').show();
+                    $('div#div-loading-image').hide();
+                    $('label#lblNotiContent').text("Thêm thành công");
+                    $('div#div-button').show();
+                    $('button#btnNotiOk').click(function () {
+                        $('.dim, #noti-add-bill').hide();
+                    });
+                } else {
+                    $('.dim, #noti-add-bill').show();
+                    $('div#div-loading-image').hide();
+                    $('label#lblNotiContent').text("Thêm không thành công");
+                    $('div#div-button').show();
+                    $('button#btnNotiOk').click(function () {
+                        $('.dim, #noti-add-bill').hide();
+                    });
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                $('.dim, #noti-add-bill').show();
+                $('div#div-loading-image').hide();
+                $('label#lblNotiContent').text("Thêm không thành công");
+                $('div#div-button').show();
+                $('button#btnNotiOk').click(function () {
+                    $('.dim, #noti-add-bill').hide();
+                });
+            }
+        });
+    });
+
+    $('button#addDrinkToCart').click(function () {
+        $('label#lblQuantityErr').text('');
+        if ($('input#txtQuantity').val() === '') {
+            $('label#lblQuantityErr').text('Hãy nhập số lượng');
+            return;
+        } else {
+            $.ajax({
+                url: "/cart/addToCart",
+                type: 'POST',
+                data: {
+                    txtDrinkId: $('input#txtDrinkId').val(),
+                    txtDrinkName: $('input#txtDrinkName').val(),
+                    txtPrice: $('input#txtPrice').val(),
+                    txtQuantity: $('input#txtQuantity').val(),
+                    image1: $('input#image1').val(),
+                    _token: $('input#crsf_token_form').val()
+                },
+                beforeSend: function (xhr) {
+                    $('div.noti-dialog, .dim').show();
+                    $('div#div-loading-image').show();
+                    $('label#lblNotiContent').text("Đang lưu...");
+                    $('div#div-button').hide();
+                },
+                success: function (data, textStatus, jqXHR) {
+                    if (data === 'true') {
+                        $('div.noti-dialog, .dim').show();
+                        $('div#div-loading-image').hide();
+                        $('label#lblNotiContent').text("Đã thêm vào giỏ hàng");
+                        $('div#div-button').show();
+                        $('button#btnNotiOk').click(function () {
+                            $('div.noti-dialog, .dim').hide();
+                        });
+                    } else {
+                        $('.dim, #noti-add-bill').show();
+                        $('div#div-loading-image').hide();
+                        $('label#lblNotiContent').text("Thêm không thành công, hãy thử lại");
+                        $('div#div-button').show();
+                        $('button#btnNotiOk').click(function () {
+                            $('div.noti-dialog, .dim').hide();
+                        });
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    
                 }
             });
         }
