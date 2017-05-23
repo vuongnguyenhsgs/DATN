@@ -13,6 +13,7 @@
 
 Route::get('/', 'Shop\ShopController@index');
 Route::get('/login', 'Process\LoginController@getLogin');
+Route::get('/login-mob', 'Process\LoginController@getLoginMob');
 Route::post('/login', 'Process\LoginController@postLogin');
 Route::get('/logout', 'Process\LoginController@getLogout');
 
@@ -36,7 +37,19 @@ Route::post('/Admin/materials/delete','Process\MaterialController@postDelMateria
 Route::get('/Admin/bills/all','Process\BillController@getBill');
 Route::get('/Admin/bills/add','Process\BillController@getAddBill');
 Route::post('/Admin/bills/add','Process\BillController@postAddBill');
-Route::get('/Admin/bills/add-mob','Process\BillController@postAddBill');
+Route::post('Admin/bills/delete','Process\BillController@deleteBill');
+Route::post('/Admin/bills/detail','Process\BillController@getBillDetail');
+Route::get('/Admin/bills/edit/{id}','Process\BillController@getEditBill');
+Route::get('/Admin/bills/{id}','Process\BillController@getBillById');
+
+Route::get('/Admin/bills/add-mob','Process\BillController@postAddBillMob');
+Route::get('/Admin/bills/get-mob','Process\BillController@getBillById');
+Route::get('/Admin/bills/get-by-status-mob','Process\BillController@getBillByStatus');
+Route::get('/Admin/bills/get-bill_detail-mob','Process\BillController@getBillDetail');
+Route::get('/Admin/bills/update-bill-mob','Process\BillController@updateBillStatus');
+Route::post('/Admin/bills/update-bill','Process\BillController@updateBillStatus');
+Route::get('/Admin/tables','Process\BillController@getAllTable');
+Route::get('/Admin/tables/update','Process\BillController@updateStatusTable');
 
 Route::get('/Admin/productions/all','Process\ProductionController@getAll');
 Route::get('/Admin/productions/add','Process\ProductionController@getAdd');
@@ -45,8 +58,16 @@ Route::post('/Admin/productions/delete','Process\ProductionController@postDelPro
 Route::post('/Admin/categories/is-existed', 'Process\DrinkController@isExistedCategory');
 Route::post('/Admin/categories/add', 'Process\DrinkController@addCategory');
 
+Route::get('/Admin/employees/all','Process\EmployeeController@getAll');
+
+Route::post('/Admin/bills/statistic','Process\BillController@getStatistic');
+
 Route::get('/home','Shop\ShopController@index');
 Route::get('/category/{id}', 'Shop\ShopController@getDrinkByCategory');
 Route::get('/drink/detail/{id}', 'Shop\ShopController@getDrinkDetail');
 Route::post('/cart/addToCart','Shop\ShopController@postAddToBill');
 Route::get('/cart','Shop\ShopController@getCart');
+Route::post('/cart/remove','Shop\ShopController@removeItemFromCart');
+Route::post('/cart/add-bill','Shop\ShopController@addBillOnline');
+Route::post('/cart/update','Shop\ShopController@updateCart');
+Route::post('/cart/add-bill','Shop\ShopController@checkoutCart');

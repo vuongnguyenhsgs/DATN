@@ -45,7 +45,7 @@
         </div>
         <div class="panel-body" style="padding: 0px">
             <div class="col-lg-12" id="div-loading-image" style="text-align: center; display: none">
-                <img style="width: 150px; height: 100px;" src="/images/Loading_icon.gif">
+                <img style="width: 150px; height: 100px;" src="{!!asset('/images/Loading_icon.gif')!!}">
             </div>
             <div class="row row-input"><label id="lblNotiContent"></label></div>
             <div id="div-button" class="row row-input" style="text-align: center; display: block">

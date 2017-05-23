@@ -15,6 +15,7 @@
         <link href="{!!asset('vendors/font-awesome/css/font-awesome.min.css')!!}" rel="stylesheet">
         <!-- NProgress -->
         <link href="{!!asset('vendors/nprogress/nprogress.css')!!}" rel="stylesheet">
+        <link href="{!!asset('css/jquery-ui.min.css')!!}" rel="stylesheet">
         <!-- jQuery custom content scroller -->
         <link href="{!!asset('vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css')!!}" rel="stylesheet"/>
         <link href="{!!asset('vendors/datatables.net-bs/css/dataTables.bootstrap.min.css')!!}" rel="stylesheet">
@@ -42,6 +43,7 @@
         <script src="{!!asset('vendors/jquery.tagsinput/src/jquery.tagsinput.js')!!}"></script>
         <script src="{!!asset('js/hc.js')!!}"></script>
         <script src="{!!asset('js/select2.js')!!}"></script>
+        <script src="{!!asset('js/jquery-ui.min.js')!!}"></script>
 
     </head>
 
@@ -58,8 +60,8 @@
                                 <img src="{!!asset('images/user-icon.png')!!}" class="img-circle profile_img">
                             </div>
                             <div class="profile_info">
-                                <span>Welcome,</span>
-                                <h2>John Doe</h2>
+                                <span>Xin chào,</span>
+                                <h2>{!!session('user')->fullname!!}</h2>
                             </div>
                         </div>
 
@@ -97,7 +99,14 @@
                                         <a href="#"><i class="fa fa-list-alt"></i>Đơn hàng<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="{!!url('Admin/bills/all')!!}">Danh sách đơn hàng</a></li>
+                                           
                                         </ul>
+                                    </li>
+                                </ul>
+                                <ul class="nav side-menu">
+                                    <li>
+                                        <a href="{!!url('Admin/employees/all')!!}"><i class="fa fa-list-alt"></i>Quản lý nhân viên<span class="fa fa-chevron-down"></span></a>
+                                        
                                     </li>
                                 </ul>
                             </div>
@@ -106,7 +115,6 @@
                         <br />
                     </div>
                 </div>
-
                 <!-- top navigation -->
                 <div class="top_nav">
                     <div class="nav_menu">
@@ -117,19 +125,11 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="">
                                     <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        <img src="{!!asset('images/user-icon.png')!!}" alt="">John Doe
+                                        <img src="{!!asset('images/user-icon.png')!!}" alt="">{!!session('user')->fullname!!}
                                         <span class=" fa fa-angle-down"></span>
                                     </a>
                                     <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <li><a href="javascript:;"> Profile</a></li>
-                                        <li>
-                                            <a href="javascript:;">
-                                                <span class="badge bg-red pull-right">50%</span>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
-                                        <li><a href="javascript:;">Help</a></li>
-                                        <li><a href="{!!url('login')!!}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                        <li><a href="{!!url('/logout')!!}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                                     </ul>
                                 </li>
 
@@ -167,9 +167,7 @@
 
                 <!-- footer content -->
                 <footer>
-                    <div class="pull-right">
-                        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                    </div>
+                    
                     <div class="clearfix"></div>
                 </footer>
                 <!-- /footer content -->

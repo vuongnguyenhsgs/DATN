@@ -55,7 +55,7 @@
 <div class="col-lg-12 col-md-12 col-sm-12">
     <div class="x_panel">
         <div class="x_content">
-            <form action="/Admin/drinks/add" method="POST" id="frmAddNewDrink" enctype="multipart/form-data">
+            <form action="{!!url('/Admin/drinks/add')!!}" method="POST" id="frmAddNewDrink" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                 <input type="hidden" id="type-request" name="type" value="{!!$type!!}">
                 @if($type == 'edit')

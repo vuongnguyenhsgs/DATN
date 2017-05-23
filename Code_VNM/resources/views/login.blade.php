@@ -6,10 +6,10 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-        <link rel="stylesheet" href="css/bootstrap.css">
-        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="{!!asset('css/bootstrap.css')!!}">
+        <link rel="stylesheet" href="{!!asset('css/main.css')!!}">
         
-        <script src="vendors/jquery/dist/jquery.js"></script>
+        <script src="{!!asset('vendors/jquery/dist/jquery.js')!!}"></script>
     </head>
     <body>
         <style type="text/css">
@@ -21,9 +21,9 @@
         </style>
         <div class="container">
             <div class="card card-container" style="text-align: center">
-                <img id="profile-img" class="profile-img-card" src="images/logo-hc.jpg" />
+                <img id="profile-img" class="profile-img-card" src="{!!asset('images/logo-hc.jpg')!!}" />
                 <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-signin" method="POST" action="/login">
+                <form class="form-signin" method="POST" action="{!!url('/login')!!}">
                     <input type="hidden" name="_token" value="{!! csrf_token() !!}">
                     <span></span>
                     <div style="width: 300px">
