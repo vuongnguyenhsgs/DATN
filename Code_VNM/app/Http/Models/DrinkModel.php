@@ -30,8 +30,23 @@ class DrinkModel {
         return DB::table('drinks')->select('id','name','category_id','image1','price','description')
                 ->where('deleted_flag','=','0')->paginate(6);
     }
+    
+    public static function getSearchDrink($key){
+        return DB::table('drinks')->select('id','name','category_id','image1','price','description')
+                ->where([
+                    ['deleted_flag','=','0'],
+                    ['name','like','%'.$key.'%'],
+                    ])->get();
+    }
+    public static function getSearchDrinkPaginate($key){
+        return DB::table('drinks')->select('id','name','category_id','image1','price','description')
+                ->where([
+                    ['deleted_flag','=','0'],
+                    ['name','like','%'.$key.'%'],
+                    ])->paginate(6);
+    }
 
-        public static function isExistedCategory($categoryName) {
+    public static function isExistedCategory($categoryName) {
         $categories = DB::table('categories')->select('id', 'name')
                         ->where('name', '=', $categoryName)->get();
         if (count($categories) > 0) {

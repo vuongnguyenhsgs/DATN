@@ -103,7 +103,7 @@ class BillController extends Controller {
             return $billId;
         } catch (Exception $ex) {
             DB::rollBack();
-            return 'false';
+            return $ex;
         }
     }
     

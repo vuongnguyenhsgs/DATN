@@ -42,7 +42,7 @@ Route::post('/Admin/bills/detail','Process\BillController@getBillDetail');
 Route::get('/Admin/bills/edit/{id}','Process\BillController@getEditBill');
 Route::get('/Admin/bills/{id}','Process\BillController@getBillById');
 
-Route::get('/Admin/bills/add-mob','Process\BillController@postAddBillMob');
+Route::post('/Admin/bills/add-mob','Process\BillController@postAddBillMob');
 Route::get('/Admin/bills/get-mob','Process\BillController@getBillById');
 Route::get('/Admin/bills/get-by-status-mob','Process\BillController@getBillByStatus');
 Route::get('/Admin/bills/get-bill_detail-mob','Process\BillController@getBillDetail');
@@ -71,3 +71,5 @@ Route::post('/cart/remove','Shop\ShopController@removeItemFromCart');
 Route::post('/cart/add-bill','Shop\ShopController@addBillOnline');
 Route::post('/cart/update','Shop\ShopController@updateCart');
 Route::post('/cart/add-bill','Shop\ShopController@checkoutCart');
+Route::get('/search-key/{keySearch}','Shop\ShopController@getDataSearch');
+Route::get('/search','Shop\ShopController@getPageSearch');

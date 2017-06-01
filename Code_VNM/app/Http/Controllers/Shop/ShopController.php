@@ -15,21 +15,21 @@ class ShopController extends Controller {
         $categories = CategoryModel::getAllCategory();
         $drinks = DrinkModel::getDrinkToHomePage();
         $cartQuantity = \Cart::getTotalQuantity();
-        return view('Public.home', compact(['categories', 'drinks','cartQuantity']));
+        return view('Public.home', compact(['categories', 'drinks', 'cartQuantity']));
     }
 
     protected function getDrinkByCategory($id) {
         $categories = CategoryModel::getAllCategory();
         $drinks = DrinkModel::getDrinkByCategory($id);
         $cartQuantity = \Cart::getTotalQuantity();
-        return view('Public.home', compact(['categories', 'drinks','cartQuantity']));
+        return view('Public.home', compact(['categories', 'drinks', 'cartQuantity']));
     }
 
     protected function getDrinkDetail($id) {
         $categories = CategoryModel::getAllCategory();
         $drinks = DrinkModel::getDrinkById($id);
         $cartQuantity = \Cart::getTotalQuantity();
-        return view('Public.detail', compact(['categories', 'drinks','cartQuantity']));
+        return view('Public.detail', compact(['categories', 'drinks', 'cartQuantity']));
     }
 
     protected function postAddToBill(Request $request) {
@@ -52,7 +52,7 @@ class ShopController extends Controller {
         $categories = CategoryModel::getAllCategory();
         $cartItems = \Cart::getContent();
         $cartQuantity = \Cart::getTotalQuantity();
-        return view('Public.cart', compact(['categories', 'cartItems','cartQuantity']));
+        return view('Public.cart', compact(['categories', 'cartItems', 'cartQuantity']));
     }
 
     protected function removeItemFromCart(Request $request) {
@@ -119,10 +119,22 @@ class ShopController extends Controller {
                 ));
             }
             DB::commit();
+            Cart::clear();
             return 'true';
         } catch (Exception $ex) {
             return 'false';
         }
+    }
+
+    protected function getDataSearch($keySearch) {
+        return DrinkModel::getSearchDrink($keySearch);
+    }
+
+    protected function getPageSearch(Request $request) {
+        $categories = CategoryModel::getAllCategory();
+        $drinks = DrinkModel::getSearchDrinkPaginate($request->key);
+        $cartQuantity = \Cart::getTotalQuantity();
+        return view('Public.home', compact(['categories', 'drinks', 'cartQuantity']));
     }
 
 }

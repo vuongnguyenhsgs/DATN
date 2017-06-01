@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/resources/views/Admin/Bills/all.blade.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/app/Http/Models/BillModel.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/public/js/hc.js</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/app/Http/Models/UserModel.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/public/css/main.css</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/routes/web.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/app/Http/Controllers/Process/BillController.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/resources/views/Admin/Bills/add.blade.php</file>
+            <file>file:/E:/Workspace/PHP/DATN/Code_VNM/resources/views/Public/detail.blade.php</file>
+        </group>
+    </open-files>
+</project-private>

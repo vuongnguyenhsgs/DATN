@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller{
     
-    
-    
+    protected function getAll(){
+    }
 }

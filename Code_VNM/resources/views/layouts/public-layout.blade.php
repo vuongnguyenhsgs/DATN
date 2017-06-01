@@ -7,15 +7,20 @@
         <meta name="author" content="">
         <title>Home | E-Shopper</title>
         <link href="{!!asset('vendors/bootstrap/dist/css/bootstrap.min.css')!!}" rel="stylesheet">
+        <link href="{!!asset('css/jquery-ui.css') !!}" rel="stylesheet">
         <link href="{!!asset('vendors/font-awesome/css/font-awesome.min.css')!!}" rel="stylesheet">
         <link href="{!!asset('css/prettyPhoto.css')!!}" rel="stylesheet">
         <link href="{!!asset('css/animate.css')!!}" rel="stylesheet">
         <link href="{!!asset('css/main.css')!!}" rel="stylesheet">
         <link href="{!!asset('css/responsive.css')!!}" rel="stylesheet">
+        
+        
+        
     </head><!--/head-->
 
     <body>
         <header id="header"><!--header-->
+            <input type="hidden" id="crsf_token_form" value="{{ csrf_token() }}"/>
             <div class="header-middle"><!--header-middle-->
                 <div class="container">
                     <div class="row">
@@ -30,12 +35,19 @@
                             </div>
                             <div class="shop-menu pull-right">
                                 <ul class="nav navbar-nav">
+                                    <li>
+                                        <form id="frmSearch" method="GET" action="/search">
+                                        <div class="search_box pull-right">
+                                            <input type="text" class="form-control" name="key" id="txtSearchKey" placeholder="Search">
+                                        </div>
+                                            </form>
+                                    </li>
                                     <li><a href="#"><i class="fa fa-star"></i> Liên hệ</a></li>
-                                    <li><a href="{!!url('/cart')!!}"><i class="fa fa-shopping-cart"></i> Giỏ hàng(
+                                    <li><a href="{!!url('/cart')!!}"><i class="fa fa-shopping-cart"></i> Giỏ hàng
                                             @if($cartQuantity != 0)
-                                            {!!$cartQuantity!!}
+                                            {!!'('.$cartQuantity.')'!!}
                                             @endif
-                                            )</a></li>
+                                        </a></li>
                                     <li><a href="{!!url('/login')!!}"><i class="fa fa-lock"></i> Đăng nhập</a></li>
                                 </ul>
                             </div>
@@ -187,13 +199,51 @@
 
     </footer><!--/Footer-->
 
-
+    
 
     <script src="{!!asset('vendors/jquery/dist/jquery.min.js')!!}"></script>
     <script src="{!!asset('vendors/bootstrap/dist/js/bootstrap.min.js')!!}"></script>
     <script src="{!!asset('js/jquery.scrollUp.min.js')!!}"></script>
+    <script src="{!!asset('js/jquery-ui.min.js')!!}"></script>
     <!--<script src="js/price-range.js"></script>-->
     <script src="{!!asset('js/jquery.prettyPhoto.js')!!}"></script>
     <script src="{!!asset('js/hc.js')!!}"></script>
+    
+    <script type="text/javascript" language="JavaScript">
+    $('#txtSearchKey').keyup(function () {
+        var arr = [];
+        if ($('#txtSearchKey').val() !== "") {
+            $.ajax({
+                url: "{!!url('/search-key')!!}"  + '/' + $(this).val(),
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var i = 0;
+                    if(data.length > 0){
+                        $.each(data, function (index, value) {
+                        if(i < 5){
+                            arr[index] = value["name"];
+                            i++;
+                        }
+
+                    });
+                    }
+                    
+                    $('#txtSearchKey').autocomplete({
+                        source: arr,
+                        select: function(event, ui) {
+                            $('#txtSearchKey').val(ui.item.label);
+                            $('form#frmSearch').submit();
+                        }
+                    });
+                },
+                error: function () {
+                }
+            });
+        }
+    });
+
+</script>
+    
 </body>
 </html>

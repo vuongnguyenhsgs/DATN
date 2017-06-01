@@ -20,7 +20,7 @@ class BillModel {
                     'customer_phone' => $arrData['txtCustomerPhone'],
                     'customer_address' => $arrData['txtCustomerAddress'],
                     'total' => $arrData['total'],
-                    'created_at' => date('Y-m-d H:i:s', time()),
+                    'created_at' => date('Y-m-d H:i:s', time()+ intval(7)),
                     'status' => $arrData['status'],
                     'employee_id' => $arrData['employee_id']
         ]);
@@ -55,7 +55,8 @@ class BillModel {
                         ->where([
                             ['deleted_flag', '=', 0],
                             ['status','=',$status]
-                        ])->get(); 
+                        ])
+                ->orderBy('created_at','desc')->get(); 
     }
     
     public static function updateBillStatus($billId, $status, $employeeId){

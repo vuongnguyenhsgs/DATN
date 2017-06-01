@@ -590,7 +590,6 @@ $(document).ready(function () {
 
     //Thêm sản phẩm vào giỏ hàng ở màn hình chi tiết sản phẩm
     $('button#addDrinkToCart').click(function () {
-        alert('clicked');
         $('label#lblQuantityErr').text('');
         if ($('input#txtQuantity').val() === '') {
             $('label#lblQuantityErr').text('Hãy nhập số lượng');
@@ -758,7 +757,10 @@ $(document).ready(function () {
             });
         }
     });
-
+    
+    $('button#btnCheckoutCancel').click(function(){
+        $('.dim, div#checkout-dialog').hide();
+    });
     /**
      * Lưu hóa đơn
      */
